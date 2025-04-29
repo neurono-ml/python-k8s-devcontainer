@@ -7,8 +7,6 @@ name: Docker Data Science
 
 on:
   workflow_run:
-    workflows:
-      - Docker Base
     branches: ["main"]
     tags: [ 'v*.*.*' ]
     types:
