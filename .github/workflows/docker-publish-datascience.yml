@@ -6,11 +6,11 @@ name: Docker Data Science
 # documentation.
 
 on:
-  workflow_run:
-    branches: ["main"]
+  push:
     tags: [ 'v*.*.*' ]
-    types:
-      - completed
+  pull_request:
+    branches: [ "main" ]
+
 
 env:
   # Use docker.io for Docker Hub if empty
