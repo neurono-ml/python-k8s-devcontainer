@@ -1,4 +1,4 @@
-name: Docker Base
+name: Docker
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -6,17 +6,20 @@ name: Docker Base
 # documentation.
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Docker Base
+    branches: ["main"]
     tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "main" ]
+    types:
+      - completed
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}-base
-  DOCKERFILE: base.Dockerfile
+  IMAGE_NAME: ${{ github.repository }}-datascience
+  DOCKERFILE: datascience.Dockerfile
 
 
 jobs:
